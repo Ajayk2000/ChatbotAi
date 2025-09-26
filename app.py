@@ -10,19 +10,19 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# -------------------- FastAPI Setup --------------------
+# FastAPI Setup 
 app = FastAPI()
 
 # Allow React frontend (CORS)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # in production, replace "*" with frontend domain
+    allow_origins=["*"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# -------------------- LangChain Setup --------------------
+#  LangChain Setup
 llm = ChatOpenAI(
     base_url="https://openrouter.ai/api/v1",
     api_key=os.getenv("API_KEY"),  
@@ -51,10 +51,10 @@ graph.add_edge("model", END)
 # compile graph
 chat_app = graph.compile()
 
-# keep state per session (for now, single global state)
+
 state = {"messages": [{"role": "system", "content": "You are a helpful AI assistant."}]}
 
-# -------------------- FastAPI Endpoints --------------------
+#  FastAPI Endpoints
 class Message(BaseModel):
     message: str
 
