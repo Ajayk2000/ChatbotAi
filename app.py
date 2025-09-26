@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# FastAPI Setup 
+#FastAPI Setup 
 app = FastAPI()
 
 # Allow React frontend (CORS)
